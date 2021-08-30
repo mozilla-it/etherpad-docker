@@ -1,4 +1,4 @@
-FROM etherpad/etherpad:1.8.14
+FROM etherpad/etherpad:1.8.12
 
 ENV SKIN_NAME="no-skin"
 
