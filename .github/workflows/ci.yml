@@ -1,4 +1,4 @@
-name: CI (Python, Docker Build)
+name: CI (Docker Build)
 
 on: [ push, pull_request ]
 
