@@ -13,7 +13,7 @@ for p in $(curl -s --data-urlencode "apikey=$ETHERPAD_API_KEY" "http://localhost
 			--data-urlencode "apikey=$ETHERPAD_API_KEY" \
 			--data-urlencode "padID=$p" \
 			"http://localhost:$PORT/api/1/deletePad"
-		((count++))
+		count = $(( $count + 1 ))
 	fi
 done
 
