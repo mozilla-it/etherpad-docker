@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -euxo pipefail
 min_stamp=$(date -d "-15 days" +%s)
 
 count=0
