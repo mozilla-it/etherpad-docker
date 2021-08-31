@@ -17,4 +17,4 @@ for p in $(curl -s --data-urlencode "apikey=$ETHERPAD_API_KEY" "http://localhost
 	fi
 done
 
-echo "Identified $count pads for removal"
+echo "Identified and deleted $count pads"
