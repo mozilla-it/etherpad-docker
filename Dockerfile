@@ -1,31 +1,21 @@
-FROM node:9
-MAINTAINER Adam Frank <afrank@mozilla.com>
+FROM etherpad/etherpad:1.8.12
 
-ENV ETHERPAD_VERSION 1.7.5
+USER root
 
-RUN apt-get update && \
-    DEBIAN_FRONTEND=noninteractive apt-get install -y \
-    curl unzip mysql-client node-pg postgresql-client && \
-    rm -r /var/lib/apt/lists/*
+RUN export DEBIAN_FRONTEND=noninteractive; \
+    mkdir -p /usr/share/man/man1 && \
+    apt-get -qq update && \
+    apt-get -qq --no-install-recommends install \
+        ca-certificates \
+        curl \
+        jq \
+        && \
+    apt-get -qq clean && \
+    rm -rf /var/lib/apt/lists/*
 
-WORKDIR /opt/
+USER etherpad
 
-RUN curl -SL \
-    https://github.com/ether/etherpad-lite/archive/${ETHERPAD_VERSION}.zip \
-    > etherpad.zip && unzip etherpad && rm etherpad.zip && \
-    mv etherpad-lite-${ETHERPAD_VERSION} etherpad-lite
+ENV SKIN_NAME="no-skin"
 
-WORKDIR etherpad-lite
-
-RUN bin/installDeps.sh && rm settings.json
-COPY entrypoint.sh /entrypoint.sh
-COPY index.html /opt/etherpad-lite/src/templates/index.html
-
-RUN sed -i 's/^node/exec\ node/' bin/run.sh
-
-VOLUME /opt/etherpad-lite/var
-RUN ln -s var/settings.json settings.json
-
-EXPOSE 9001
-ENTRYPOINT ["/entrypoint.sh"]
-CMD ["bin/run.sh", "--root"]
+COPY etherpad-manage.sh .
+COPY index.html src/templates/index.html
