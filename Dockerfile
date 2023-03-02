@@ -19,4 +19,3 @@ ENV SKIN_NAME="no-skin"
 
 COPY etherpad-manage.sh .
 COPY index.html src/templates/index.html
-COPY pad.html src/templates/pad.html
