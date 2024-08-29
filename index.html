@@ -3,7 +3,6 @@
 %>
 <!doctype html>
 <html>
-
         <title><%=settings.title%></title>
         <meta charset="utf-8">
         <meta name="referrer" content="no-referrer">
@@ -29,7 +28,6 @@
               background: -moz-radial-gradient(circle,#aaa,#eee 60%) center fixed;
               background: -ms-radial-gradient(circle,#aaa,#eee 60%) center fixed;
               background: -o-radial-gradient(circle,#aaa,#eee 60%) center fixed;
-              border-top: 8px solid rgba(51,51,51,.8);
             }
             #wrapper {
               border-top: 1px solid #999;
@@ -138,7 +136,11 @@
         <link href="static/skins/<%=encodeURI(settings.skinName)%>/index.css?v=<%=settings.randomVersionString%>" rel="stylesheet">
         <% e.end_block(); %>
 
-        <h2 style='text-align:center;'>Welcome to the Mozilla Community Etherpad Instance.<br/><br/> PLEASE NOTE:<br/> Etherpad contents will be automatically erased after 7 days of inactivity,<br/> and Mozilla's <a href="https://www.mozilla.org/en-US/about/governance/policies/participation/">Community Participation Guidelines</a> Apply.</h2>
+        <div style="padding: 0.6em; color: #fff; background-color: #ff4f5e; font-size: 1.2em; font-weight: bold; text-align: center;">
+          <p>INFO: Effective September 30, 2024, this app will no longer be supported and will be removed from availability.</p>
+        </div>
+
+        <h2 style="padding: 0.6em; margin-top: 1em; text-align: center;">Welcome to the Mozilla Community Etherpad Instance.<br/><br/> PLEASE NOTE:<br/> Etherpad contents will be automatically erased after 7 days of inactivity,<br/> and Mozilla's <a href="https://www.mozilla.org/en-US/about/governance/policies/participation/">Community Participation Guidelines</a> Apply.</h2>
 
         <div id="wrapper">
           <% e.begin_block("indexWrapper"); %>
